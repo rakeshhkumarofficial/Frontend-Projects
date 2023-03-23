@@ -140,12 +140,17 @@
 
     /* serach bar */
 
-   
+    .ChatList{
+      width: 350px;
+      margin-top: 10px;
+      float: left;
+    }
     #search-form {
       display: flex;
       justify-content: left;
       margin-top: 10px;
       margin-left: 10px;
+      width: 340px;
     }
     input[type="text"] {
       padding: 10px;
@@ -178,3 +183,79 @@
       border: 1px solid #ddd;
       border-radius: 5px;
     }
+
+
+#results {
+border-top: 1px solid #ddd;
+list-style: none;
+padding: 0;
+margin: 0;
+margin-top: 10px;
+margin-left: 10px;
+height: 300px;
+width: 330px;
+overflow-y: auto;
+}
+#results li {
+  background-color: whitesmoke;
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+}
+
+
+
+/* Chat Room  */
+
+#chatWindow{
+  margin-top: 10px;
+  margin-left: 20px;
+  /* display: inline-block; */
+  position: relative;
+}
+
+#inputArea{
+  position: absolute;
+  bottom: 10px; 
+}
+
+#chatWindow {
+  width: 70%;
+  height: 500px;
+  margin-left: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow-y: scroll;
+}
+
+#messageArea {
+  padding: 10px;
+}
+
+#inputArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+#messageInput {
+  flex: 1;
+  margin-right: 10px;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#sendButton {
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+}

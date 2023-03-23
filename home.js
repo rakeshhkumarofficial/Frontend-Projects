@@ -3,8 +3,9 @@ const changePass = document.getElementById('changePassword');
 const searchForm = document.getElementById('search-button');
 const searchInput = document.querySelector('#search-input');
 const resultsList = document.querySelector('#results');
-
-
+if (localStorage.getItem("items")) {
+  resultsList.innerHTML = localStorage.getItem("items");
+}
 searchForm.addEventListener('click', (event) => {
     event.preventDefault();
     const searchTerm = searchInput.value;
@@ -20,11 +21,28 @@ searchForm.addEventListener('click', (event) => {
   .then(res => {
    // window.location.href = 'home.html';
    console.log('Search successful:', res)
+   const newListItem = document.createElement("li"); 
+    if(res.data==null){
+      alert(res.message);
+      return;
+    }
+    for (let i = 0; i < resultsList.childNodes.length; i++) {
+      const listItem = resultsList.childNodes[i]; // get the current child node (li element)
+      if (listItem.nodeName === "LI") { // check if the current node is an li element
+        if(listItem.innerHTML==res.data[0].firstName + " " + res.data[0].lastName){
+          return;
+        }       
+      }
+    }
+    newListItem.textContent = res.data[0].firstName + " " + res.data[0].lastName ;     
+    resultsList.appendChild(newListItem);
+    localStorage.setItem("items", resultsList.innerHTML);
   })
   .catch(error => {
     console.error('Login failed:', error); 
-  });       
-    resultsList.innerHTML = `<li>"${searchTerm}"</li>`;
+  }); 
+    
+   // resultsList.innerHTML = `<li>"${searchTerm}"</li>`;
 });
 
 // for logout and changepassword
